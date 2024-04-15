@@ -43,7 +43,7 @@ const MovieForm: React.FC<Props> = ({ onClose, onSubmit, currentMovie, id }) => 
 
     useEffect(() => {
         if (movie.title.length > 2) {
-            fetch(`http://www.omdbapi.com/?s=${movie.title}&apikey=${process.env.OMDB_API_KEY}`)
+            fetch(`https://www.omdbapi.com/?s=${movie.title}&apikey=${process.env.OMDB_API_KEY}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.Search) {

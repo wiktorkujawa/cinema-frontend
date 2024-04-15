@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// Assuming you have these components or similar ones for halls
 import HallForm from '@/components/organisms/HallForm/HallForm';
 import HallsGrid from '@/components/organisms/HallsGrid/HallsGrid';
 import { AddHall, Hall } from '@/models';
@@ -77,7 +76,11 @@ export default function HallsPage({ halls: initialHalls }: Props) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.API_URL}/halls`);
+  const res = await fetch(`${process.env.API_URL}/halls`, {
+    next: {
+      revalidate: 30
+    }
+  });
   const halls = await res.json();
 
   return {

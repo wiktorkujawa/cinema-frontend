@@ -1,7 +1,7 @@
 import { MovieDetail } from '@/models';
 import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
-import styles from '@/styles/pages/MovieDetailPage.module.scss'; // Assuming similar styling can be applied
+import styles from '@/styles/pages/MovieDetailPage.module.scss';
 import Image from 'next/image';
 
 type MovieProps = {
@@ -37,7 +37,11 @@ const MovieDetailPage: NextPage<MovieProps> = ({ movie }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params!;
-  const res = await fetch(`${process.env.API_URL}/movies/${id}`);
+  const res = await fetch(`${process.env.API_URL}/movies/${id}`, {
+    next: {
+      revalidate: 30
+    }
+  });
   if (!res.ok) {
     return { notFound: true };
   }

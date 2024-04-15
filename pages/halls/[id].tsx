@@ -36,7 +36,11 @@ const HallDetailPage: NextPage<HallProps> = ({ hall }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params!;
-  const res = await fetch(`${process.env.API_URL}/halls/${id}`);
+  const res = await fetch(`${process.env.API_URL}/halls/${id}`, {
+    next: {
+      revalidate: 30
+    }
+  });
   if (!res.ok) {
     return { notFound: true };
   }
