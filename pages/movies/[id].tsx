@@ -2,6 +2,7 @@ import { MovieDetail } from '@/models';
 import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
 import styles from '@/styles/pages/MovieDetailPage.module.scss'; // Assuming similar styling can be applied
+import Image from 'next/image';
 
 type MovieProps = {
   movie: MovieDetail
@@ -14,7 +15,8 @@ const MovieDetailPage: NextPage<MovieProps> = ({ movie }) => {
         <h1 className={styles.title}>{movie.title}</h1>
         <p className={styles.capacity}>Duration: {movie.duration} minutes</p>
         {movie.description && <p className={styles.description}>{movie.description}</p>}
-        {movie.poster && <img src={movie.poster} alt={movie.title} />}
+        {movie.poster && <Image width={300} height={426} className='object-cover' src={movie.poster} alt={movie.title} />}
+
         <h2 className={styles.sectionTitle}>Associated Halls:</h2>
         <ul className={styles.movieList}>
           {movie.halls.map((hall) => (

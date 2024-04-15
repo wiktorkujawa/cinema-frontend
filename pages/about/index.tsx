@@ -20,7 +20,7 @@ export default function About() {
           For movie and hall management, Cinema Scheduler utilizes a straightforward REST API, with the movies page integrating the OMDB API to suggest additions to the movie collection. This feature not only streamlines the process of updating movie listings but also enriches the database with comprehensive movie details.
         </p>
         <p>
-          Designed with both functionality and aesthetics in mind, Cinema Scheduler is a showcase of a programmer's ability to integrate various technologies into a cohesive and user-friendly platform. Whether you're interested in the technical prowess of Rust and Axum, the interactivity of WebSockets, or the seamless integration of third-party APIs, Cinema Scheduler stands as a compelling portfolio piece for any developer looking to demonstrate their skill and creativity.
+          Designed with both functionality and aesthetics in mind, Cinema Scheduler is a showcase of a programmer&#39;s ability to integrate various technologies into a cohesive and user-friendly platform. Whether you&#39;re interested in the technical prowess of Rust and Axum, the interactivity of WebSockets, or the seamless integration of third-party APIs, Cinema Scheduler stands as a compelling portfolio piece for any developer looking to demonstrate their skill and creativity.
         </p>
       </main>
     </div>

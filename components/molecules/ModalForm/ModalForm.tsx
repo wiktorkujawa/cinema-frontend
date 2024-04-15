@@ -5,7 +5,6 @@ import { Button } from "@/components/atoms/Button/Button";
 import moment from "moment";
 
 type ModalFormProps = {
-    isOpen: boolean | string;
     onClose: () => void;
     initialFormData: any;
     halls: Hall[];
@@ -13,9 +12,7 @@ type ModalFormProps = {
     onSubmit: (formData: any) => void;
 };
 
-const ModalForm: React.FC<ModalFormProps> = ({ isOpen, onClose, initialFormData, halls, movies, onSubmit }) => {
-    if (!isOpen) return null;
-
+const ModalForm: React.FC<ModalFormProps> = ({ onClose, initialFormData, halls, movies, onSubmit }) => {
     const [formData, setFormData] = useState(initialFormData);
 
     const handleSubmit = (event: React.FormEvent) => {

@@ -35,6 +35,7 @@ export default function ImageFallback({ src, fallbackSrc, ...rest }: Props) {
       onError={() => {
         setImgSrc(fallbackSrc);
       }}
+      alt='fallback image'
     />
   );
 }

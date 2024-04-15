@@ -276,14 +276,14 @@ const Calendar = ({ halls, movies }: Props) => {
       // selectMirror={true}
       />
 
-      <ModalForm
-        isOpen={isModalOpen}
+      {isModalOpen && <ModalForm
         onClose={() => setIsModalOpen(false)}
         initialFormData={initialFormData}
         halls={halls}
         movies={movies}
         onSubmit={handleFormSubmit}
       />
+      }
     </div>
   );
 };
