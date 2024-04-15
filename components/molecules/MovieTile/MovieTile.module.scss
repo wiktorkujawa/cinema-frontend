@@ -1,0 +1,60 @@
+.movieTile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    justify-content: space-between;
+    width: 200px;
+    
+    // img {
+    //     width: 100%; // Makes the image width fill the container
+    //     height: 200px; // Fixed height for all images
+    //     object-fit: cover; // Ensures the image covers the area, maintaining its aspect ratio
+    //     display: block; // Removes any inline spacing
+    //   }
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+  
+    div {
+      margin-top: 8px;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-around;
+        padding: 8px;
+      }
+
+      .actionButton {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .icon {
+        fill: currentColor; // Allows you to control the icon color via font color
+        width: 24px; // Example size, adjust as needed
+        height: 24px;
+      }
+      
+      .modifyButton .icon {
+        color: #1890ff; // Example color, adjust as needed
+      }
+      
+      .deleteButton .icon {
+        color: #ff4d4f; // Example color, adjust as needed
+      }
+    
+  }

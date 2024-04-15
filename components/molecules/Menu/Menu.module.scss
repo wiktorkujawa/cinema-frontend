@@ -1,0 +1,88 @@
+.menu {
+  @apply transition-transform;
+  position: fixed;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  padding: 20px;
+  height: 100vh;
+  background: white;
+  transform: translateX(-100%);
+
+  @screen md {
+    flex-direction: row;
+    position: static;
+    padding: 0;
+    height: auto;
+    background: transparent;
+    transform: translateX(0);
+  }
+
+  &.mobileMenu {
+    transform: translateX(0);
+  }
+}
+
+.link {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white; 
+  background-color: #0070f3;
+  border-radius: 5px;
+  &:hover {
+    background-color: darken(#0070f3, 10%); 
+  }
+}
+
+.toggleContainer {
+  padding: 0 8px;
+  border: black solid 2px;
+  @apply md:hidden block;
+  position: fixed;
+  color: black;
+  font-size: 2rem;
+  top: 16px;
+  right: 16px;
+
+.toggleMenu {
+
+  position: relative;
+  
+  @apply transition-transform duration-500;
+
+    &::before {
+      position: absolute;
+      content: '-';
+      left:0;
+      top: 4px;
+    }
+  
+    &::after {
+      position: absolute;
+      content: '-';
+      left: 0;
+      bottom: 4px;
+    } 
+    
+    &.mobileToggle {
+
+      transform: rotate(45deg);
+
+      &::before {
+        // position: absolute;
+        content: '';
+        // left:0;
+        // top: 4px;
+      }
+
+      &::after {
+        transform: rotate(90deg) translate(5px,-1px);
+      }
+      // visibility: hidden;
+    }
+  }
+
+}

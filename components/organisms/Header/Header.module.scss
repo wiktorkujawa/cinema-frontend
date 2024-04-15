@@ -1,0 +1,10 @@
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    position: sticky;
+    top: 0;
+    height: 84px;
+    z-index: 1000; // Ensure the header is above other content
+  }

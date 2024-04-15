@@ -1,0 +1,65 @@
+.modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: black;
+  }
+  
+  .modalContent {
+    background-color: #fefefe;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  .closeButton {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closeButton:hover,
+  .closeButton:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .modalHeader {
+    margin-bottom: 20px;
+  }
+  
+  .modalFooter {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea, select {
+        background-color: #2d3748; /* Darker gray */
+        color: white;
+        border: none;
+        padding: 0.5rem;
+        margin-top: 1rem;
+      }
+    
+
+}

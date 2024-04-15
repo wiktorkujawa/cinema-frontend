@@ -1,0 +1,65 @@
+$form-padding: 10px 20px;
+$form-background-color: #0070f3;
+$form-color: white;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submitButton {
+    padding: $form-padding;
+    border: none;
+    background-color: $form-background-color;
+    color: $form-color;
+    cursor: pointer;
+  }
+
+  input, textarea {
+    background-color: #2d3748; /* Darker gray */
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    margin-top: 1rem;
+  }
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: black;
+}
+
+.modalContent {
+  background-color: #fefefe;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+
+.closeButton {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

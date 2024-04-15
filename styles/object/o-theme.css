@@ -1,0 +1,6 @@
+.o-theme-window {
+  @apply dark:bg-dark-bg-window bg-theme-bg-window 
+      dark:border-dark-border border-theme-border
+      hover:border-theme-font-secondary
+      hover:dark:border-dark-font-secondary;
+}

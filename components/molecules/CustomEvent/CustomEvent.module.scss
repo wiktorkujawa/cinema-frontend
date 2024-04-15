@@ -1,0 +1,19 @@
+// components/molecules/CustomEvent/CustomEvent.module.scss
+
+.customEventContainer {
+    // Your container styles here
+}
+  
+  .tooltip {
+    position: absolute;
+    color: black;
+    z-index: 1050;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+    .title {
+        font-size: 1.5rem;
+    }
+    // Add more styles as needed
+  }

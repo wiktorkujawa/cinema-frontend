@@ -1,0 +1,39 @@
+.hallsGrid {
+    padding: 20px; // Padding around the entire grid
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 32px; // Adjust the gap between tiles as needed
+    column-gap: 16px;
+  }
+  
+  .hallTile {
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    min-height: 120px;
+  
+    &:hover {
+      transform: scale(1.05); // Slightly enlarge tiles on hover
+    }
+  
+    img {
+      width: 100%; // Make images fill their container
+      height: auto;
+      border-radius: 4px; // Optional: round corners of images
+    }
+  
+    div {
+      margin-top: 8px; // Space between the image and the title
+    }
+
+    .addNew {
+        font-size: 36px; // Larger plus sign
+        display: flex;
+        border: 2px white dashed;
+        align-items: center;
+        justify-content: center;
+        height: 100%; // Ensure the plus sign is centered
+      }
+  }

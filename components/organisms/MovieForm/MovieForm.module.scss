@@ -1,0 +1,134 @@
+$form-padding: 10px 20px;
+$form-background-color: #0070f3;
+$form-color: white;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submitButton {
+    padding: $form-padding;
+    border: none;
+    background-color: $form-background-color;
+    color: $form-color;
+    cursor: pointer;
+  }
+
+  input, textarea {
+    background-color: #2d3748; /* Darker gray */
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .suggestionsTileList {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #fff;
+  
+    // Custom scrollbar styles
+    &::-webkit-scrollbar {
+      width: 8px; // Adjust the width of the scrollbar
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; // Color of the track
+      border-radius: 4px; // Match the border-radius of the container
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #888; // Color of the scrollbar thumb
+      border-radius: 4px; // Rounded corners for the thumb
+      &:hover {
+        background: #555; // Darker color on hover for interactivity
+      }
+    }
+  }
+  
+  .suggestionTile {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s; // Smooth background transition on hover
+  
+    &:hover {
+      background-color: #f0f0f0; // Light grey background on hover for interactivity
+    }
+  }
+  
+  .suggestionPosterTile {
+    width: 40px; // Small poster thumbnail
+    height: 60px; // Maintain aspect ratio
+    object-fit: cover; // Ensure the image covers the area
+    margin-right: 12px; // Space between image and title
+    border-radius: 2px; // Slightly rounded corners for the image
+  }
+  
+  .suggestionTitleTile {
+    font-size: 14px; // Slightly smaller font for the suggestions
+    color: #333; // Dark grey for readability
+    flex: 1; // Take up remaining space to push controls to the edge
+  }
+
+  .posterPreview {
+    margin-top: 10px;
+    border: 1px solid #ddd; // Add a light border around the preview
+    padding: 5px;
+    max-width: 200px; // Limit the width of the preview
+    border-radius: 4px; // Optional: round the corners
+  }
+  
+  .posterImage {
+    width: 100%; // Make the image responsive to the container's width
+    height: auto; // Maintain aspect ratio
+    display: block; // Remove any extra space below the image
+  }
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: black;
+}
+
+.modalContent {
+  background-color: #fefefe;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+
+.closeButton {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
