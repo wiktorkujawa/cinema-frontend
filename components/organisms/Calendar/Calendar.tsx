@@ -263,6 +263,7 @@ const Calendar = ({ halls, movies }: Props) => {
         selectable={true}
         onSelectSlot={onSelectSlot}
         defaultDate={moment().toDate()}
+        // todo: fix double modal on events in two rows
         components={{
           event: (props) => <CustomEvent
             {...props}
