@@ -29,7 +29,7 @@ export default function ImageFallback({ src, fallbackSrc, ...rest }: Props) {
 
 
   return (
-    <Image
+    <img
       {...rest}
       src={imgSrc}
       onError={() => {

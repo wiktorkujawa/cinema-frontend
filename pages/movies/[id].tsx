@@ -15,7 +15,9 @@ const MovieDetailPage: NextPage<MovieProps> = ({ movie }) => {
         <h1 className={styles.title}>{movie.title}</h1>
         <p className={styles.capacity}>Duration: {movie.duration} minutes</p>
         {movie.description && <p className={styles.description}>{movie.description}</p>}
-        {movie.poster && <Image width={300} height={426} className='object-cover' src={movie.poster} alt={movie.title} />}
+        {/* {movie.poster && <Image width={300} height={426} className='object-cover' src={movie.poster} alt={movie.title} />} */}
+        {movie.poster && <img width={300} height={426} className='object-cover' src={movie.poster} alt={movie.title} />}
+
 
         <h2 className={styles.sectionTitle}>Associated Halls:</h2>
         <ul className={styles.movieList}>
