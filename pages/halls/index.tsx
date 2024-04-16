@@ -75,11 +75,11 @@ export default function HallsPage({ halls: initialHalls }: Props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`${process.env.API_URL}/halls`, {
-    next: {
-      revalidate: 30
-    }
+    // next: {
+    //   revalidate: 30
+    // }
   });
   const halls = await res.json();
 

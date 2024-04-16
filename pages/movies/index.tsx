@@ -76,11 +76,11 @@ export default function MoviesPage({ movies: initialMovies }: Props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`${process.env.API_URL}/movies`, {
-    next: {
-      revalidate: 30
-    }
+    // next: {
+    //   revalidate: 30
+    // }
   });
   const movies = await res.json();
 
