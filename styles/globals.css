@@ -32,6 +32,10 @@
   overflow: visible !important;
 }
 
+.rbc-now .rbc-current {
+  border-color: red;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
