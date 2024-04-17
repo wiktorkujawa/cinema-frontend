@@ -32,8 +32,8 @@
   overflow: visible !important;
 }
 
-.rbc-now .rbc-current {
-  border-color: red;
+.rbc-today {
+  background-color: #8B0000 !important;
 }
 
 body {
