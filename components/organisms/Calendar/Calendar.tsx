@@ -1,6 +1,11 @@
 // pages/index.js or App.js
-import { CalendarProps, Calendar as ReactCalendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
+import { CalendarProps, Calendar as ReactCalendar, dateFnsLocalizer } from 'react-big-calendar';
+import { format, parse, startOfWeek, getDay } from 'date-fns';
+import enUS from 'date-fns/locale/en-US'
+
+const locales = {
+  'en-US': enUS,
+}
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import { useEffect, useRef, useState } from 'react';
@@ -12,7 +17,13 @@ import CustomEvent from '@/components/molecules/CustomEvent/CustomEvent';
 import useOutsideAlerter from '@/hooks/UseOutsideAlerter';
 import Notification from '@/components/atoms/Notification/Notification'; // Import Notification component
 
-const localizer = momentLocalizer(moment);
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek,
+  getDay,
+  locales,
+})
 
 const DnDCalendar = withDragAndDrop(ReactCalendar);
 
@@ -53,7 +64,7 @@ const Calendar = ({ halls, movies }: Props) => {
 
   const triggerNotification = (message: string, type: 'success' | 'error') => {
     const newNotification: NotificationProps = {
-      id: Date.now(), // Simple way to generate a unique ID
+      id: Date.now(),
       message,
       type,
     };
@@ -190,8 +201,8 @@ const Calendar = ({ halls, movies }: Props) => {
       start: slotInfo.start,
       end: slotInfo.end,
       title: '',
-      hall_id: halls[0]?._id, // Default to empty, user will select
-      movie_id: movies[0]?._id // Default to empty, user will select
+      hall_id: halls[0]?._id,
+      movie_id: movies[0]?._id
     });
     setIsModalOpen(true);
   };
@@ -223,11 +234,10 @@ const Calendar = ({ halls, movies }: Props) => {
         }));
       }
     }
-    setIsModalOpen(false); // Close the modal
+    setIsModalOpen(false);
   };
 
   const deleteSession = (sessionId: string) => {
-    // Implementation of deleting a session
     if (wsRef.current) {
       wsRef.current.send(JSON.stringify({
         action: "delete_session",
@@ -262,7 +272,7 @@ const Calendar = ({ halls, movies }: Props) => {
         onEventDrop={onEventOrResizeDrop}
         selectable={true}
         onSelectSlot={onSelectSlot}
-        defaultDate={moment().toDate()}
+        defaultDate={new Date()}
         // todo: fix double modal on events in two rows
         components={{
           event: (props) => <CustomEvent

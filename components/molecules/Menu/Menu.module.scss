@@ -26,19 +26,20 @@
 }
 
 .link {
-  display: block;
+  // display: block;
   padding: 10px 20px;
   text-decoration: none;
-  color: white; 
-  background-color: #0070f3;
+  color: black; 
+  font-weight: 600;
+  // background-color: #0070f3;
   border-radius: 5px;
   &:hover {
-    background-color: darken(#0070f3, 10%); 
+    opacity: 50%;
   }
 }
 
 .toggleContainer {
-  padding: 0 8px;
+  padding: 0 12px;
   border: black solid 2px;
   @apply md:hidden block;
   position: fixed;

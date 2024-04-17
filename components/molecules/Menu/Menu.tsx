@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './Menu.module.scss'; // Assuming you've switched to SCSS
+import styles from './Menu.module.scss';
 import { useState } from 'react';
 import classNames from 'classnames';
 

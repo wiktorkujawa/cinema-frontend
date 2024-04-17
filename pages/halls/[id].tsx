@@ -1,7 +1,7 @@
 import { HallDetail } from '@/models';
 import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
-import moment from 'moment';
+import { format } from 'date-fns';
 import styles from '@/styles/pages/HallDetailPage.module.scss';
 
 type HallProps = {
@@ -25,7 +25,7 @@ const HallDetailPage: NextPage<HallProps> = ({ hall }) => {
         <ul className={styles.sessionList}>
           {hall.sessions.map((session) => (
             <li key={session._id} className={styles.sessionItem}>
-              Session at {moment(session.start).format('YYYY-MM-DD HH:mm')} - Ends at {moment(session.end).format('YYYY-MM-DD HH:mm')}
+              Session at {format(session.start,'yyyy-MM-dd HH:mm')} - Ends at {format(session.end,'yyyy-MM-dd HH:mm')}
             </li>
           ))}
         </ul>

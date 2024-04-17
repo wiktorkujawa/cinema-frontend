@@ -2,7 +2,7 @@ import { Hall, Movie } from "@/models";
 import { ChangeEvent, useState } from "react";
 import styles from './ModalForm.module.scss';
 import { Button } from "@/components/atoms/Button/Button";
-import moment from "moment";
+import { format } from "date-fns";
 
 type ModalFormProps = {
     onClose: () => void;
@@ -22,7 +22,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, initialFormData, halls, 
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-
+        
         setFormData((prev: any) => ({
             ...prev,
             [name]: value
@@ -44,12 +44,13 @@ const ModalForm: React.FC<ModalFormProps> = ({ onClose, initialFormData, halls, 
 
                     <div className={styles.formGroup}>
                         <label htmlFor="start">Start</label>
-                        <input type="datetime-local" onChange={handleChange} name="start" value={moment(formData.start).format('YYYY-MM-DDThh:mm') || ''} />
+                        <input type="datetime-local" onChange={handleChange} name="start" value={format(formData.start,"yyyy-MM-dd'T'HH:mm") || ''} />
+                        {/* { formData.start} */}
                     </div>
 
                     <div className={styles.formGroup}>
                         <label htmlFor="end">End</label>
-                        <input type="datetime-local"onChange={handleChange} name="end" value={moment(formData.end).format('YYYY-MM-DDThh:mm') || ''} />
+                        <input type="datetime-local"onChange={handleChange} name="end" value={format(formData.end,"yyyy-MM-dd'T'HH:mm") || ''} />
                     </div>
 
 

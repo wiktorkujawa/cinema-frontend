@@ -1,12 +1,13 @@
 import { Button } from '@/components/atoms/Button/Button';
 import React from 'react';
-import styles from './CustomEvent.module.scss'; // Import the SCSS module
-import moment from 'moment';
+import styles from './CustomEvent.module.scss';
+import { format } from 'date-fns';
 
-const CustomEvent = ({ event, deleteSession, openUpdateModal, selectedEventId, setSelectedEventId }: any) => {
+const CustomEvent = ({ event, deleteSession, openUpdateModal, selectedEventId, setSelectedEventId, ...props }: any) => {
+ 
 
   const handleDelete = (e: any) => {
-    e.stopPropagation(); // Prevent the event from bubbling up and triggering other onClick handlers
+    e.stopPropagation();
     deleteSession(event._id);
   };
 
@@ -19,19 +20,26 @@ const CustomEvent = ({ event, deleteSession, openUpdateModal, selectedEventId, s
     setSelectedEventId(event._id);
     // Find all .rbc-month-row elements and reset their z-index
     document.querySelectorAll('.rbc-month-row').forEach(row => {
-      // Asserting that row is an HTMLElement to access style property
       (row as HTMLElement).style.zIndex = '0';
     });
 
-    // Using currentTarget (the element you attached the event to) and ensuring it's an HTMLElement
-    const monthRow = (e.currentTarget as HTMLElement).closest('.rbc-month-row');
+    const monthRow = (e.currentTarget as HTMLElement).closest('.rbc-month-row')
+    
     if (monthRow) {
       (monthRow as HTMLElement).style.zIndex = '1';
     }
+    if(props.continuesPrior) {
+      if(monthRow?.previousSibling){
+        (monthRow?.previousSibling as HTMLElement).style.zIndex = '2';
+      }
+    }
   }
 
-  // Determine if this event's tooltip should be shown
-  const showTooltip = selectedEventId === event._id;
+  const showTooltip = selectedEventId === event._id && !props.continuesPrior;
+
+  if(selectedEventId === event._id) {
+    console.log(props);
+  }
 
   return (
     <div onClick={handleClick}>
@@ -39,8 +47,8 @@ const CustomEvent = ({ event, deleteSession, openUpdateModal, selectedEventId, s
       {showTooltip && (
         <div className={styles.tooltip}>
           <p className={styles.title}>{event.title}</p>
-          <p>{`Start: ${moment(event.start).format('YYYY-MM-DD HH:mm')}`}</p>
-          <p>{`End: ${moment(event.end).format('YYYY-MM-DD HH:mm')}`}</p>
+          <p>{`Start: ${format(event.start,'yyyy-MM-dd HH:mm')}`}</p>
+          <p>{`End: ${format(event.end,'yyyy-MM-dd HH:mm')}`}</p>
           <Button onClick={handleUpdate}>Update</Button>
           <Button onClick={handleDelete}>Delete</Button>
         </div>
