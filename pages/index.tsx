@@ -1,19 +1,27 @@
 import { Inter } from "next/font/google";
 import Calendar from '@/components/organisms/Calendar/Calendar';
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { Hall, Movie } from "@/models";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
  
   const getHalls = async () => {
-    const res = await fetch(`${process.env.API_URL}/halls`);
+    const res = await fetch(`${process.env.API_URL}/halls`, {
+      next: {
+        revalidate: 30
+      }
+    });
     const halls: Hall[] = await res.json();
     return halls;
   };
   const getMovies = async () => {
-    const res = await fetch(`${process.env.API_URL}/movies`);
+    const res = await fetch(`${process.env.API_URL}/movies`, {
+      next: {
+        revalidate: 30
+      }
+    });
     const movies: Movie[] = await res.json();
     return movies;
   };
