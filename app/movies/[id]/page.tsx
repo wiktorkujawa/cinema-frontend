@@ -1,19 +1,25 @@
-import { MovieDetail } from '@/models';
-import { GetServerSideProps, NextPage } from 'next';
+import { Movie, MovieDetail } from '@/models';
 import React from 'react';
 import styles from '@/styles/pages/MovieDetailPage.module.scss';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
-type MovieProps = {
-  movie: MovieDetail
+type Params = {
+  id: string
 };
 
-const MovieDetailPage: NextPage<MovieProps> = ({ movie }) => {
+const MovieDetailPage = async ({ params }: { params: Params }) => {
+  const movie = await getMovieDetail(params.id);
+
+  if (!movie) {
+    notFound()
+  }
   return (
     <section className='o-container o-container--2xl'>
       <div className={styles.movieDetail}>
-        <h1 className={styles.title}>{movie.title}</h1>
-        <p className={styles.capacity}>Duration: {movie.duration} minutes</p>
+        <h1 className={styles.title}>{movie?.title}</h1>
+        <p className={styles.capacity}>Duration: {movie?.duration} minutes</p>
         {movie.description && <p className={styles.description}>{movie.description}</p>}
         {/* {movie.poster && <Image width={300} height={426} className='object-cover' src={movie.poster} alt={movie.title} />} */}
         {movie.poster && <img width={300} height={426} className='object-cover' src={movie.poster} alt={movie.title} />}
@@ -37,23 +43,48 @@ const MovieDetailPage: NextPage<MovieProps> = ({ movie }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.params!;
+export const generateStaticParams = async () => {
+    const res = await fetch(`${process.env.API_URL}/movies`, {
+      next: {
+        revalidate: 30
+      }
+    });
+    const movies: Movie[] = await res.json();
+  
+    return movies.map((movie) => ({
+      params: { id: movie._id }
+    }));
+}
+
+export const generateMetadata = async ({ params }: { params: Params }): Promise<Metadata> => {
+    const res = await fetch(`${process.env.API_URL}/movies/${params.id}`, {
+      next: {
+        revalidate: 30
+      }
+    }).catch(() => notFound());
+    
+    const movie: MovieDetail = await res.json();
+  
+    return {
+        title: movie.title,
+        description: movie.description
+    }
+}
+
+
+export const getMovieDetail = async (id: string) => {
   const res = await fetch(`${process.env.API_URL}/movies/${id}`, {
     next: {
       revalidate: 30
     }
   });
   if (!res.ok) {
-    return { notFound: true };
+    return undefined;
   }
-  const movie = await res.json();
+  const movie: MovieDetail = await res.json();
 
-  return {
-    props: {
-      movie,
-    },
-  };
+  return movie;
+  
 };
 
 export default MovieDetailPage;

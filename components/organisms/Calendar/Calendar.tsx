@@ -1,4 +1,4 @@
-// pages/index.js or App.js
+'use client';
 import { CalendarProps, Calendar as ReactCalendar, dateFnsLocalizer } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import enUS from 'date-fns/locale/en-US'
@@ -253,7 +253,7 @@ const Calendar = ({ halls, movies }: Props) => {
   };
 
   return (
-    <div ref={wrapperRef}>
+    <div className='o-container o-container--lg' ref={wrapperRef}>
       <div id="notification-container">
         {visibleNotifications.map(notification => (
           <Notification
@@ -273,7 +273,6 @@ const Calendar = ({ halls, movies }: Props) => {
         selectable={true}
         onSelectSlot={onSelectSlot}
         defaultDate={new Date()}
-        // todo: fix double modal on events in two rows
         components={{
           event: (props) => <CustomEvent
             {...props}

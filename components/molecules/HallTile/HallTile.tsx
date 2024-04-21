@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styles from './HallTile.module.scss';
-import EditIcon from '../../../public/images/edit-button.svg';
-import TrashIcon from '../../../public/images/delete-button.svg';
-import HallForm from '@/components/organisms/HallForm/HallForm';
+import EditIcon from '@/public/images/edit-button.svg';
+import TrashIcon from '@/public/images/delete-button.svg';
+import HallForm from '@/components/molecules/HallForm/HallForm';
 import { AddHall } from '@/models';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 type Props = {
     _id: string;

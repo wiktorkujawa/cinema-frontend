@@ -1,3 +1,4 @@
+'use client';
 import { Menu } from '../../molecules/Menu/Menu';
 import styles from './Header.module.scss';
 

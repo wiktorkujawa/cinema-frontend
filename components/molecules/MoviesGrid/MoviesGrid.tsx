@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './MoviesGrid.module.scss'; // Import the CSS module
 import MovieTile from '@/components/molecules/MovieTile/MovieTile';
 import classNames from 'classnames';

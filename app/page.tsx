@@ -1,12 +1,14 @@
-import { Inter } from "next/font/google";
 import Calendar from '@/components/organisms/Calendar/Calendar';
-import { GetStaticProps } from "next";
 import { Hall, Movie } from "@/models";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const getStaticProps: GetStaticProps = async () => {
+import type { Metadata } from 'next'
  
+export const metadata: Metadata = {
+  title: 'Cinema Scheduler',
+  description: 'Schedule your movie showtimes with this interactive websocket calendar',
+}
+
+
   const getHalls = async () => {
     const res = await fetch(`${process.env.API_URL}/halls`, {
       next: {
@@ -26,28 +28,9 @@ export const getStaticProps: GetStaticProps = async () => {
     return movies;
   };
 
-  const [halls, movies] = await Promise.all([getHalls(), getMovies()]);
-
-  return {
-    props: {
-      halls,
-      movies
-    },
-  };
-};
-
-type Props = {
-  halls: Hall[],
-  movies: Movie[]
-}
-
-
-export default function Home({ halls, movies}:Props) {
+export default async function Home() {
+    const [halls, movies] = await Promise.all([getHalls(), getMovies()]);
   return (
-    <div className={`flex min-h-screen flex-col ${inter.className}`}>
-      <main className="flex-grow flex flex-col items-center justify-center p-24">
         <Calendar halls={halls} movies={movies} />
-      </main>
-    </div>
   );
 }

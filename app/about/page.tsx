@@ -1,13 +1,15 @@
-import Head from 'next/head';
 import styles from '@/styles/pages/About.module.scss';
+
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'About Cinema Scheduler',
+  description: 'Discover the technologies and features behind Cinema Scheduler, a cutting-edge portfolio project.',
+}
 
 export default function About() {
   return (
     <div className="o-container o-container--2xl my-16">
-      <Head>
-        <title>About Cinema Scheduler</title>
-        <meta name="description" content="Discover the technologies and features behind Cinema Scheduler, a cutting-edge portfolio project." />
-      </Head>
       <main>
         <h1 className={styles.title}>Technologies Behind Cinema Scheduler</h1>
         <p className={styles.description}>

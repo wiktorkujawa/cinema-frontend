@@ -1,3 +1,4 @@
+'use client';
 import { Hall, Movie } from "@/models";
 import { ChangeEvent, useState } from "react";
 import styles from './ModalForm.module.scss';

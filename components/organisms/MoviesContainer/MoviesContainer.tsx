@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import MovieForm from '@/components/organisms/MovieForm/MovieForm';
-import MoviesGrid from '@/components/organisms/MoviesGrid/MoviesGrid';
+'use client';
+import React, { useState } from 'react'
+import MoviesGrid from '@/components/molecules/MoviesGrid/MoviesGrid';
+import MovieForm from '@/components/molecules/MovieForm/MovieForm';
 import { AddMovie, Movie } from '@/models';
 
 type Props = {
-  movies: Movie[];
+    movies: Movie[]
 }
 
-export default function MoviesPage({ movies: initialMovies }: Props) {
-  const [showFormModal, setShowFormModal] = useState(false);
+const MoviesContainer = ({ movies: initialMovies}: Props) => {
+    const [showFormModal, setShowFormModal] = useState(false);
 
   const [movies, setMovies] = useState<Movie[]>(initialMovies);
 
@@ -67,26 +68,12 @@ export default function MoviesPage({ movies: initialMovies }: Props) {
           console.error('Error adding new movie:', error);
         }
       };
-
   return (
-    <div>
-      <MoviesGrid movies={movies} handleDelete={handleDelete} handleModify={handleModify} openAddMovieModal={() => setShowFormModal(true)} />
+    <>
+    <MoviesGrid movies={movies} handleDelete={handleDelete} handleModify={handleModify} openAddMovieModal={() => setShowFormModal(true)} />
       {showFormModal && <MovieForm onSubmit={addNewMovie} onClose={() => setShowFormModal(false)} />}
-    </div>
-  );
+    </>
+  )
 }
 
-export async function getStaticProps() {
-  const res = await fetch(`${process.env.API_URL}/movies`, {
-    next: {
-      revalidate: 30
-    }
-  });
-  const movies = await res.json();
-
-  return {
-    props: {
-      movies,
-    },
-  };
-}
+export default MoviesContainer

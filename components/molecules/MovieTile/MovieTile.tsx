@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
 import styles from './MovieTile.module.scss';
 import ImageWithFallback from '@/components/atoms/Image/Image';
-import EditIcon from '../../../public/images/edit-button.svg';
-import TrashIcon from '../../../public/images/delete-button.svg';
-import MovieForm from '@/components/organisms/MovieForm/MovieForm';
+import EditIcon from '@/public/images/edit-button.svg';
+import TrashIcon from '@/public/images/delete-button.svg';
+import MovieForm from '@/components/molecules/MovieForm/MovieForm';
 import { AddMovie } from '@/models';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 type Props = {
@@ -33,8 +35,8 @@ const MovieTile: React.FC<Props> = ({ title, description, duration, poster, _id,
                     src={poster}
                     alt={`${title} poster`}
                     fallbackSrc="/images/fallback.jpg"
-                    width={200} // Fixed width
-                    height={300} // Fixed height
+                    width={200}
+                    height={300}
                 />
             </div>
             <div onClick={() => router.push(`/movies/${_id}`)}>{title}</div>
