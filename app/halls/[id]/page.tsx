@@ -68,7 +68,7 @@ export const generateMetadata = async ({ params }: { params: Params }): Promise<
     }
 }
 
-export const getHallDetail = async (id: string) => {
+const getHallDetail = async (id: string) => {
     const res = await fetch(`${process.env.API_URL}/halls/${id}`, {
       next: {
         revalidate: 30

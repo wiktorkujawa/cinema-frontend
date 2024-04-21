@@ -72,7 +72,7 @@ export const generateMetadata = async ({ params }: { params: Params }): Promise<
 }
 
 
-export const getMovieDetail = async (id: string) => {
+const getMovieDetail = async (id: string) => {
   const res = await fetch(`${process.env.API_URL}/movies/${id}`, {
     next: {
       revalidate: 30
