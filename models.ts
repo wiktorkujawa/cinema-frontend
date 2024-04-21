@@ -1,6 +1,6 @@
 export interface Session {
     _id: string,
-    title: string, // Added title field
+    title: string,
     movie_id: string,
     hall_id: string,
     start: string,
@@ -55,5 +55,5 @@ export interface DeleteResponse {
 export type NotificationProps = {
     id: number;
     message: string;
-    type: 'success' | 'error'; // You can extend this type based on your needs
+    type: 'success' | 'error';
   };

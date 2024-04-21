@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
     const [halls, movies] = await Promise.all([getHalls(), getMovies()]);
-  return (
-        <Calendar halls={halls} movies={movies} />
-  );
+    return (
+          <Calendar halls={halls} movies={movies} />
+    );
 }

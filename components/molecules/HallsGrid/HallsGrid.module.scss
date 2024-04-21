@@ -1,8 +1,8 @@
 .hallsGrid {
-    padding: 20px; // Padding around the entire grid
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    row-gap: 32px; // Adjust the gap between tiles as needed
+    row-gap: 32px;
     column-gap: 16px;
   }
   
@@ -15,25 +15,25 @@
     min-height: 120px;
   
     &:hover {
-      transform: scale(1.05); // Slightly enlarge tiles on hover
+      transform: scale(1.05);
     }
   
     img {
-      width: 100%; // Make images fill their container
+      width: 100%;
       height: auto;
-      border-radius: 4px; // Optional: round corners of images
+      border-radius: 4px;
     }
   
     div {
-      margin-top: 8px; // Space between the image and the title
+      margin-top: 8px;
     }
 
     .addNew {
-        font-size: 36px; // Larger plus sign
+        font-size: 36px;
         display: flex;
         border: 2px white dashed;
         align-items: center;
         justify-content: center;
-        height: 100%; // Ensure the plus sign is centered
+        height: 100%;
       }
   }

@@ -6,13 +6,6 @@
     transition: transform 0.2s;
     justify-content: space-between;
     width: 200px;
-    
-    // img {
-    //     width: 100%; // Makes the image width fill the container
-    //     height: 200px; // Fixed height for all images
-    //     object-fit: cover; // Ensures the image covers the area, maintaining its aspect ratio
-    //     display: block; // Removes any inline spacing
-    //   }
   
     &:hover {
       transform: scale(1.05);
@@ -44,17 +37,17 @@
         justify-content: center;
     }
     .icon {
-        fill: currentColor; // Allows you to control the icon color via font color
-        width: 24px; // Example size, adjust as needed
+        fill: currentColor;
+        width: 24px;
         height: 24px;
       }
       
       .modifyButton .icon {
-        color: #1890ff; // Example color, adjust as needed
+        color: #1890ff;
       }
       
       .deleteButton .icon {
-        color: #ff4d4f; // Example color, adjust as needed
+        color: #ff4d4f;
       }
     
   }

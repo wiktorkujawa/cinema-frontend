@@ -15,7 +15,7 @@ const MoviesContainer = ({ movies: initialMovies}: Props) => {
 
   const handleDelete = async (id:string) => {
     try {
-      const response = await fetch(`${process.env.API_URL}/movies/${id}`, { // Your API endpoint
+      const response = await fetch(`${process.env.API_URL}/movies/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const MoviesContainer = ({ movies: initialMovies}: Props) => {
 
     const addNewMovie = async (newMovieData: AddMovie) => {
         try {
-          const response = await fetch(`${process.env.API_URL}/movies`, { // Your API endpoint
+          const response = await fetch(`${process.env.API_URL}/movies`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -62,8 +62,8 @@ const MoviesContainer = ({ movies: initialMovies}: Props) => {
       
           if (!response.ok) throw new Error('Failed to add movie');
       
-          const newMovie = await response.json(); // Assuming the API returns the added movie
-          setMovies((prevMovies) => [...prevMovies, newMovie]); // Update the movies state
+          const newMovie = await response.json();
+          setMovies((prevMovies) => [...prevMovies, newMovie]);
         } catch (error) {
           console.error('Error adding new movie:', error);
         }

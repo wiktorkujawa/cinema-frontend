@@ -9,17 +9,17 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    z-index: 1050; // Ensure it appears above other content
+    z-index: 1050;
     margin-bottom: 16px;
   
     &.success {
-      background-color: #d4edda; // Background for success type
-      color: #155724; // Text color for success type
+      background-color: #d4edda;
+      color: #155724;
     }
   
     &.error {
-      background-color: #f8d7da; // Default background for error type
-      color: #721c24; // Default text color for error type
+      background-color: #f8d7da;
+      color: #721c24;
     }
   
     &.show {
@@ -27,18 +27,18 @@
       visibility: visible;
     }
 
-    position: relative; // Ensure the progress bar is positioned relative to the notification
+    position: relative;
 
   .progressBar {
     position: absolute;
     bottom: 0;
     left: 0;
     height: 5px;
-    background-color: darken($color: #d4edda, $amount: 15%); // Darken the success background color for the progress bar
-    transition: width 3s linear; // Match the duration with the visibility timer
+    background-color: darken($color: #d4edda, $amount: 15%);
+    transition: width 3s linear;
   }
 
   &.error .progressBar {
-    background-color: darken($color: #f8d7da, $amount: 15%); // Darken the error background color for the progress bar
+    background-color: darken($color: #f8d7da, $amount: 15%);
   }
   }

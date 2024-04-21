@@ -21,7 +21,7 @@ $form-color: white;
   }
 
   input, textarea {
-    background-color: #2d3748; /* Darker gray */
+    background-color: #2d3748;
     color: white;
     border: none;
     padding: 0.5rem;
@@ -38,21 +38,20 @@ $form-color: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     background-color: #fff;
   
-    // Custom scrollbar styles
     &::-webkit-scrollbar {
-      width: 8px; // Adjust the width of the scrollbar
+      width: 8px;
     }
   
     &::-webkit-scrollbar-track {
-      background: #f1f1f1; // Color of the track
-      border-radius: 4px; // Match the border-radius of the container
+      background: #f1f1f1;
+      border-radius: 4px;
     }
   
     &::-webkit-scrollbar-thumb {
-      background: #888; // Color of the scrollbar thumb
-      border-radius: 4px; // Rounded corners for the thumb
+      background: #888;
+      border-radius: 4px;
       &:hover {
-        background: #555; // Darker color on hover for interactivity
+        background: #555;
       }
     }
   }
@@ -62,39 +61,39 @@ $form-color: white;
     align-items: center;
     padding: 8px;
     cursor: pointer;
-    transition: background-color 0.2s; // Smooth background transition on hover
+    transition: background-color 0.2s;
   
     &:hover {
-      background-color: #f0f0f0; // Light grey background on hover for interactivity
+      background-color: #f0f0f0;
     }
   }
   
   .suggestionPosterTile {
-    width: 40px; // Small poster thumbnail
-    height: 60px; // Maintain aspect ratio
-    object-fit: cover; // Ensure the image covers the area
-    margin-right: 12px; // Space between image and title
-    border-radius: 2px; // Slightly rounded corners for the image
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 12px;
+    border-radius: 2px;
   }
   
   .suggestionTitleTile {
-    font-size: 14px; // Slightly smaller font for the suggestions
-    color: #333; // Dark grey for readability
-    flex: 1; // Take up remaining space to push controls to the edge
+    font-size: 14px;
+    color: #333;
+    flex: 1;
   }
 
   .posterPreview {
     margin-top: 10px;
-    border: 1px solid #ddd; // Add a light border around the preview
+    border: 1px solid #ddd;
     padding: 5px;
-    max-width: 200px; // Limit the width of the preview
-    border-radius: 4px; // Optional: round the corners
+    max-width: 200px;
+    border-radius: 4px;
   }
   
   .posterImage {
-    width: 100%; // Make the image responsive to the container's width
-    height: auto; // Maintain aspect ratio
-    display: block; // Remove any extra space below the image
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 

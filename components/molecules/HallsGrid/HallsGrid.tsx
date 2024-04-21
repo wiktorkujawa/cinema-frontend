@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './HallsGrid.module.scss'; // Import the CSS module
+import styles from './HallsGrid.module.scss';
 import HallTile from '@/components/molecules/HallTile/HallTile';
 import classNames from 'classnames';
 import { AddHall, Hall } from '@/models';
@@ -7,9 +7,9 @@ import { AddHall, Hall } from '@/models';
 
 type Props = {
   halls: Hall[];
-  openAddHallModal: () => void; // Function to handle the add-new click event
-  handleDelete: (id: string) => void; // Function to handle the delete click event
-  handleModify: (hallData: AddHall, id?: string ) => void; // Function to handle the modify click event
+  openAddHallModal: () => void;
+  handleDelete: (id: string) => void;
+  handleModify: (hallData: AddHall, id?: string ) => void;
 };
 
 const HallsGrid: React.FC<Props> = ({ halls, openAddHallModal, handleDelete, handleModify }) => {

@@ -10,7 +10,7 @@ const validatePosterURL = (url: string): string => {
     if (url?.startsWith('/') || url?.startsWith('http://') || url?.startsWith('https://')) {
       return url;
     }
-    return '/images/fallback.jpg'; // Fallback image
+    return '/images/fallback.jpg';
   };
 
 export default function ImageFallback({ src, fallbackSrc, ...rest }: Props) {
@@ -21,7 +21,7 @@ export default function ImageFallback({ src, fallbackSrc, ...rest }: Props) {
       if (url?.startsWith('/') || url?.startsWith('http://') || url?.startsWith('https://')) {
         return url;
       }
-      return '/images/fallback.jpg'; // Fallback image
+      return '/images/fallback.jpg';
     };
 
     setImgSrc(validatePosterURL(src));

@@ -1,14 +1,14 @@
 import React from 'react';
-import styles from './MoviesGrid.module.scss'; // Import the CSS module
+import styles from './MoviesGrid.module.scss';
 import MovieTile from '@/components/molecules/MovieTile/MovieTile';
 import classNames from 'classnames';
 import { Movie, AddMovie } from '@/models';
 
 type Props = {
   movies: Movie[];
-  openAddMovieModal: () => void; // Function to handle the add-new click event
-  handleDelete: (id: string) => void; // Function to handle the add-new click event
-  handleModify: (hallData: AddMovie, id?: string ) => void; // Function to handle the modify click event
+  openAddMovieModal: () => void;
+  handleDelete: (id: string) => void;
+  handleModify: (hallData: AddMovie, id?: string ) => void;
 
 };
 

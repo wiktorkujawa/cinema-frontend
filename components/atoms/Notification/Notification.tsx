@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Notification.module.scss'; // Import SCSS module
+import styles from './Notification.module.scss';
 import { NotificationProps } from '@/models';
 
 
@@ -10,7 +10,7 @@ const Notification: React.FC<NotificationProps> = ({ message, type, id }) => {
     setVisible(true);
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 3000); // This duration should match the transition time of the progress bar
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [message, type, id]);

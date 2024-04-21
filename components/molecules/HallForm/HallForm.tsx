@@ -3,8 +3,8 @@ import styles from './HallForm.module.scss';
 import { AddHall } from '@/models';
 
 type Props = {
-    onClose: () => void; // Prop to handle closing the modal
-    onSubmit: (newHallData: AddHall, id?: string) => void; // Prop to handle form submission
+    onClose: () => void;
+    onSubmit: (newHallData: AddHall, id?: string) => void;
     currentHall?: AddHall;
     id?: string;
 };

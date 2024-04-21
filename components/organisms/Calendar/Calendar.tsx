@@ -15,7 +15,7 @@ import { DeleteResponse, Hall, Movie, NotificationProps, Session, SessionDetailE
 import ModalForm from '@/components/molecules/ModalForm/ModalForm';
 import CustomEvent from '@/components/molecules/CustomEvent/CustomEvent';
 import useOutsideAlerter from '@/hooks/UseOutsideAlerter';
-import Notification from '@/components/atoms/Notification/Notification'; // Import Notification component
+import Notification from '@/components/atoms/Notification/Notification';
 
 const localizer = dateFnsLocalizer({
   format,
@@ -46,7 +46,6 @@ const Calendar = ({ halls, movies }: Props) => {
 
   const [notificationQueue, setNotificationQueue] = useState<NotificationProps[]>([]);
   const [visibleNotifications, setVisibleNotifications] = useState<NotificationProps[]>([]);
-
 
   useOutsideAlerter(wrapperRef, () => setSelectedEventId(null));
 
@@ -87,7 +86,7 @@ const Calendar = ({ halls, movies }: Props) => {
         setVisibleNotifications(prevVisible =>
           prevVisible.filter(visibleNotification => visibleNotification.id !== notification.id)
         );
-      }, 3000) // Adjust time as needed
+      }, 3000)
     );
 
     return () => {
@@ -126,7 +125,7 @@ const Calendar = ({ halls, movies }: Props) => {
                 _id: event._id
               }
             }));
-            triggerNotification('Sessions loaded successfully', 'success'); // Show success notification
+            triggerNotification('Sessions loaded successfully', 'success');
           }
 
           if (action_type == 'add_session') {
@@ -135,13 +134,25 @@ const Calendar = ({ halls, movies }: Props) => {
               data as SessionDetailEvent
 
             ]));
-            triggerNotification('Session added successfully', 'success'); // Show success notification
+            triggerNotification('Session added successfully', 'success');
           }
 
           if (action_type == 'update_session') {
             const update_event = data as SessionDetailEvent
             setEvents(prev => prev.map(item => {
               if (item._id == update_event?._id) {
+                if(update_event.title != item.title){
+                  triggerNotification(`Session ${item.title} renamed to ${update_event.title}`, 'success');
+                }
+                else if(new Date(update_event.start).getTime()!=item.start.getTime() && new Date(update_event.end).getTime()!=item.end.getTime()){
+                  triggerNotification(`Session ${item.title} moved from ${format(item.start, 'y MMM dd HH:mm')} to ${format(update_event.start, 'y MMM dd HH:mm')}`, 'success');
+                }
+                else if(new Date(update_event.start).getTime()!=item.start.getTime()){
+                  triggerNotification(`Session ${item.title} start data changed from ${format(item.start, 'y MMM dd HH:mm')} to ${format(update_event.start, 'y MMM dd HH:mm')}`, 'success');
+                }
+                else if(new Date(update_event.end).getTime()!=item.end.getTime()){
+                  triggerNotification(`Session ${item.title} end data changed from ${format(item.end, 'y MMM dd HH:mm')} to ${format(update_event.end, 'y MMM dd HH:mm')}`, 'success');
+                }
                 return {
                   ...update_event,
                   title: update_event.title || 'N/A',
@@ -151,19 +162,18 @@ const Calendar = ({ halls, movies }: Props) => {
               }
               return item
             }));
-            triggerNotification('Session updated successfully', 'success'); // Show success notification
           }
 
           if (action_type == 'delete_session') {
             const delete_event = data as DeleteResponse;
             setEvents(prev => prev.filter(item => item._id !== delete_event._id));
-            triggerNotification('Session deleted successfully', 'success'); // Show success notification
+            triggerNotification('Session deleted successfully', 'success');
           }
 
         }
         else {
           console.log('error');
-          triggerNotification('An error occurred', 'error'); // Show error notification
+          triggerNotification('An error occurred', 'error');
         }
 
       };
@@ -247,7 +257,6 @@ const Calendar = ({ halls, movies }: Props) => {
   };
 
   const openUpdateModal = (event: any) => {
-    // Set state or otherwise prepare to open the modal for updating the event
     setIsModalOpen(true);
     setInitialFormData({ ...event });
   };

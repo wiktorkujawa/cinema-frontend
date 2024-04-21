@@ -14,8 +14,8 @@ type OMDBMovie = {
 }
 
 type Props = {
-    onClose: () => void; // Prop to handle closing the modal
-    onSubmit: (newMovieData: AddMovie, id?: string) => void; // Prop to handle form submission
+    onClose: () => void;
+    onSubmit: (newMovieData: AddMovie, id?: string) => void;
     currentMovie?: AddMovie;
     id?: string;
 };
@@ -100,7 +100,6 @@ const MovieForm: React.FC<Props> = ({ onClose, onSubmit, currentMovie, id }) => 
         setSuggestions([]);
     }
 
-    // Use the hook to manage click outside behavior
     useOutsideAlerter(wrapperRef, () => setShowSuggestions(false));
 
     return (
