@@ -4,6 +4,14 @@ const nextConfig = {
   images: {
     domains: ['m.media-amazon.com'],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/searchMovie/:title',
+        destination: `https://www.omdbapi.com/?s=:title&apikey=${process.env.OMDB_API_KEY}`,
+      },
+    ]
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -12,11 +20,7 @@ const nextConfig = {
     })
 
     return config
-  },
-  env: {
-    OMDB_API_KEY: process.env.OMDB_API_KEY,
-    API_URL: process.env.API_URL,
-  },
+  }
 };
 
 export default nextConfig;
