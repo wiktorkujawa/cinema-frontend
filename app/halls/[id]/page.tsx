@@ -9,8 +9,9 @@ type Params = {
     id: string
   };
 
-const HallDetailPage = async ({ params }: { params: Params }) => {
-    const hall = await getHallDetail(params.id);
+const HallDetailPage = async ({ params }: { params: Promise<Params> }) => {
+    const { id } = await params;
+    const hall = await getHallDetail(id);
 
     if (!hall) {
         notFound()
@@ -53,8 +54,9 @@ export const generateStaticParams = async () => {
     }));
 }
 
-export const generateMetadata = async ({ params }: { params: Params }): Promise<Metadata> => {
-    const res = await fetch(`${process.env.API_URL}/halls/${params.id}`, {
+export const generateMetadata = async ({ params }: { params: Promise<Params> }): Promise<Metadata> => {
+    const { id } = await params;
+    const res = await fetch(`${process.env.API_URL}/halls/${id}`, {
       next: {
         revalidate: 30
       }
