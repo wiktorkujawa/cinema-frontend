@@ -9,8 +9,9 @@ type Params = {
   id: string
 };
 
-const MovieDetailPage = async ({ params }: { params: Params }) => {
-  const movie = await getMovieDetail(params.id);
+const MovieDetailPage = async ({ params }: { params: Promise<Params> }) => {
+  const { id } = await params;
+  const movie = await getMovieDetail(id);
 
   if (!movie) {
     notFound()
@@ -56,8 +57,9 @@ export const generateStaticParams = async () => {
     }));
 }
 
-export const generateMetadata = async ({ params }: { params: Params }): Promise<Metadata> => {
-    const res = await fetch(`${process.env.API_URL}/movies/${params.id}`, {
+export const generateMetadata = async ({ params }: { params: Promise<Params> }): Promise<Metadata> => {
+    const { id } = await params;
+    const res = await fetch(`${process.env.API_URL}/movies/${id}`, {
       next: {
         revalidate: 30
       }
