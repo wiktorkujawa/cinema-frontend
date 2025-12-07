@@ -1,14 +1,14 @@
 'use client';
-import { CalendarProps, Calendar as ReactCalendar, dateFnsLocalizer } from 'react-big-calendar';
+import { Calendar as ReactCalendar, dateFnsLocalizer } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
-import enUS from 'date-fns/locale/en-US'
+import { enUS } from 'date-fns/locale/en-US'
 
 const locales = {
   'en-US': enUS,
 }
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import { DeleteResponse, Hall, Movie, NotificationProps, Session, SessionDetailEvent } from '@/models';
@@ -16,14 +16,6 @@ import ModalForm from '@/components/molecules/ModalForm/ModalForm';
 import CustomEvent from '@/components/molecules/CustomEvent/CustomEvent';
 import useOutsideAlerter from '@/hooks/UseOutsideAlerter';
 import Notification from '@/components/atoms/Notification/Notification';
-
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales,
-})
 
 const DnDCalendar = withDragAndDrop(ReactCalendar);
 
@@ -60,6 +52,14 @@ const Calendar = ({ halls, movies }: Props) => {
     hall_id: '',
     movie_id: ''
   });
+
+  const localizer = useMemo(() => dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek,
+    getDay,
+    locales,
+  }), []);
 
   const triggerNotification = (message: string, type: 'success' | 'error') => {
     const newNotification: NotificationProps = {
@@ -129,10 +129,15 @@ const Calendar = ({ halls, movies }: Props) => {
           }
 
           if (action_type == 'add_session') {
+            const newEvent = data as SessionDetailEvent;
             setEvents(prev => ([
               ...prev,
-              data as SessionDetailEvent
-
+              {
+                ...newEvent,
+                title: newEvent.title || 'N/A',
+                start: new Date(newEvent.start),
+                end: new Date(newEvent.end),
+              }
             ]));
             triggerNotification('Session added successfully', 'success');
           }
